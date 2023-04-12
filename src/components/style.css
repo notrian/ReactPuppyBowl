@@ -34,8 +34,9 @@ h3 {
   padding: 2rem;
   border-radius: 1rem;
   background-color: #0f0f0f;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 1);
+  box-shadow: 0 1px 10px -2 rgba(0, 0, 0, 0.6);
   text-align: center;
+  transition: all 0.2s ease;
 }
 
 .listed {
@@ -44,14 +45,24 @@ h3 {
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #0f0f0f;
-  box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 1);
+  box-shadow: 0px 4px 10px -1px rgba(0, 0, 0, 1);
   text-align: center;
   min-width: 18rem;
   max-width: 17vw;
 }
 
+.listed:hover {
+  box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 1);
+  transform: translateY(-7px);
+}
+
 .plus {
   margin: 6rem;
+}
+
+.plus:hover {
+  box-shadow: 0px 3px 10px -1px rgba(0, 0, 0, 1);
+  transform: translateY(-5px);
 }
 
 .puppy-image {
