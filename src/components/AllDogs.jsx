@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchDogs } from "../api";
 
+import "./style.css";
+import SingleDog from "./SingleDog";
+
 export default function AllDogs() {
   const navigate = useNavigate();
 
@@ -16,20 +19,21 @@ export default function AllDogs() {
     getDogs();
   }, []);
 
-  return (
-    <div>
-      {dogs.map((dog) => {
-        return (
-          <p
-            key={dog.id}
-            onClick={() => {
-              navigate(`/${dog.id}`);
-            }}
-          >
-            {dog.name}
-          </p>
-        );
-      })}
-    </div>
-  );
+  return dogs.map((dog) => {
+    return (
+      <div
+        className="puppy-card listed pointer"
+        key={dog.id}
+        onClick={() => {
+          navigate(`/${dog.id}`);
+        }}
+      >
+        <h2>{dog.name}</h2>
+        <p>
+          Team <span className="bold">#{dog.teamId}</span> - Player is <span className="bold">on the {dog.status}.</span>
+        </p>
+        <img src={dog.imageUrl} alt="Puppy Image" className="puppy-image" />
+      </div>
+    );
+  });
 }

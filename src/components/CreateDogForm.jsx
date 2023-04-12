@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import "./style.css";
 
 export default function CreateDogForm() {
   const [name, setName] = useState("");
@@ -18,6 +21,9 @@ export default function CreateDogForm() {
         <input type="text" onChange={(e) => setEmail(e.target.value)} />
         <button>Submit</button>
       </form>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
     </div>
   );
 }

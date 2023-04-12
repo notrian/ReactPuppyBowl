@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchDog } from "../api";
+
+import "./style.css";
 
 export default function SingleDog() {
   const { dogId } = useParams();
@@ -16,5 +18,20 @@ export default function SingleDog() {
     getDog();
   }, []);
 
-  return <div>{dog.name}</div>;
+  return (
+    <div className="puppy-card">
+      <h1>{dog.name}</h1>
+      <h3>
+        Team <span className="bold">#{dog.teamId}.</span>
+      </h3>
+      <h3>
+        Player is <span className="bold">on the {dog.status}.</span>
+      </h3>
+      <h3>{dog.breed}</h3>
+      <img src={dog.imageUrl} alt="Puppy Image" className="puppy-image" />
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </div>
+  );
 }
