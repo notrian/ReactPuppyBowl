@@ -1,4 +1,4 @@
-const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2109-UNF-HY-WEB-PT/players";
+const baseUrl = "https://fsa-puppy-bowl.herokuapp.com/api/2109-UNF-HY-WEB-PT/players/";
 
 export async function fetchDogs() {
   try {
@@ -12,7 +12,7 @@ export async function fetchDogs() {
 
 export async function fetchDog(id) {
   try {
-    const response = await fetch(`${baseUrl}/${id}`);
+    const response = await fetch(`${baseUrl}${id}`);
     const data = await response.json();
     return data.data.player;
   } catch (e) {
@@ -20,12 +20,12 @@ export async function fetchDog(id) {
   }
 }
 
-export async function postDog(name, email) {
+export async function postDog(name, breed, dogStatus, imageUrl, teamId) {
   try {
     const response = await fetch(baseUrl, {
       method: "POST",
       headers: {
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
@@ -36,8 +36,20 @@ export async function postDog(name, email) {
       }),
     });
     const data = await response.json();
-    console.log(data);
-    return data.data.player;
+    return data.data.newPlayer;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function deleteDog(id) {
+  try {
+    const response = await fetch(`${baseUrl}${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    if (data.success) return true;
+    else return false;
   } catch (e) {
     console.error(e);
   }

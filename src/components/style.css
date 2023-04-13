@@ -71,3 +71,21 @@ h3 {
   min-width: 16rem;
   max-height: 60vh;
 }
+
+.dog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.spacer {
+  min-height: 0.5rem;
+}
+
+nav {
+  margin-top: 1rem;
+}
